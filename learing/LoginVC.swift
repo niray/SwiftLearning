@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import SnapKit
+import SVProgressHUD
 
 class LoginVC:UIViewController{
     
@@ -34,6 +35,7 @@ class LoginVC:UIViewController{
         mBtn.setTitleColor(UIColor.black, for: .normal)
         mBtn.setTitleColor(UIColor.red, for: .highlighted)
         mBtn.backgroundColor = UIColor.lightGray
+        mBtn.addTarget(self, action: #selector(self.onLoginClick), for: .touchUpInside)
         return mBtn
     }()
     
@@ -90,11 +92,28 @@ class LoginVC:UIViewController{
             m.width.equalTo(100)
             m.height.equalTo(35)
         }
+        
+          self.tfAcc.text = "huway"
+          self.tfPwd.text = "password"
+        
+    }
+    
+    func onLoginClick(){
+        if(self.tfAcc.text ==  "huway" && self.tfPwd.text == "password"){
+            
+            let date = Date()
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "HH:mm:ss"
+            let strNowTime = timeFormatter.string(from: date) as String
+            UserDefaults.standard.set(strNowTime, forKey: "token")
+            backEvent()
+        }else{
+            SVProgressHUD.showError(withStatus: "账号密码错误")
+        }
     }
     
     func backEvent(){
         self.navigationController?.dismiss(animated: true, completion: { 
-            
             
         })
     }

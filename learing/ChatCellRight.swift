@@ -54,14 +54,14 @@ class ChatCellRight: UITableViewCell {
         self.contentView.addSubview(lblNickname)
         
         lblNickname.snp.makeConstraints { (m) in
-            m.right.equalToSuperview().offset(-65)
+            m.right.equalToSuperview().offset(-55)
             m.top.equalToSuperview().offset(15)
         }
         self.contentView.addSubview(lblContent)
         
         lblContent.snp.makeConstraints { (m) in
-            m.right.equalToSuperview().offset(-65)
-            m.top.equalTo(self.lblNickname.snp.bottom).offset(15)
+            m.right.equalToSuperview().offset(-55)
+            m.top.equalTo(self.lblNickname.snp.bottom)
         }
         
     }

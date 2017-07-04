@@ -38,13 +38,10 @@ class ChatVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextF
         return mTf
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         self.ka_startObservingKeyboardNotifications()
-        
         
         let rightBtn = UIBarButtonItem(title:
             "资料", style: .plain, target: self, action: #selector(self.onInfoClick))
@@ -75,17 +72,14 @@ class ChatVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextF
         
         chatArray.append(createChatBean(uid: 56, date: "16:45", avatar: otherAvatar, nickName: "Justin Bieber", content: "And all the clubs you get in using my name"))
         
-        
-        chatArray.append(createChatBean(uid: selfId, date: "16:47", avatar: "", nickName: "Love Yourself", content: "你让我扫兴的次数从来都多得数不清楚"))
+        chatArray.append(createChatBean(uid: selfId, date: "16:47", avatar: "", nickName: "Love Yourself", content: "You think I'm crying oh my own well no I ain't "))
         
         chatArray.append(createChatBean(uid: 56, date: "16:46", avatar: otherAvatar, nickName: "Justin Bieber", content: "You think you broke my heart, oh girl for goodness sake"))
         
-        chatArray.append(createChatBean(uid: selfId, date: "16:48", avatar: "", nickName: "Love Yourself", content: "还常常淘气地冒我之名进那些夜店和俱乐部"))
+        chatArray.append(createChatBean(uid: selfId, date: "16:48", avatar: "", nickName: "Love Yourself", content: "And I didn't wanna write a song cause "))
         
-        chatArray.append(createChatBean(uid: selfId, date: "16:49", avatar: "", nickName: "Love Yourself", content: "你以为你伤透我心 但上帝根本没这回事"))
+        chatArray.append(createChatBean(uid: selfId, date: "16:49", avatar: "", nickName: "Love Yourself", content: "Oh baby you should go and love yourself "))
     }
-    
-    
     
     func createChatBean(
         uid :Int,
@@ -104,13 +98,23 @@ class ChatVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextF
     }
     
     func onInfoClick(){
-        
+        let alertUI = UIAlertController(title: "提示", message: "您当前的VIP等级不能查看资料，请尽快充值为SVIP?", preferredStyle: .alert)
+        let fineItem = UIAlertAction(title: "去充值", style: .default) { (act) in
+            
+        }
+        let badItem = UIAlertAction(title: "算了", style: .cancel) { (act) in
+            
+        }
+        alertUI.addAction(fineItem)
+        alertUI.addAction(badItem)
+        self.present(alertUI,animated:true){
+            
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.ka_startObservingKeyboardNotifications()
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -120,7 +124,7 @@ class ChatVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextF
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        if let inputContent = tfInput.text as? String{
+        if let inputContent = tfInput.text{
             let date = Date()
             let timeFormatter = DateFormatter()
             timeFormatter.dateFormat = "HH:mm:ss"

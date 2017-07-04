@@ -59,9 +59,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         
         if(tabBarController.viewControllers?.index(of: viewController) == 2){
             if let _ = UserDefaults.standard.value(forKey: "token"){
+                let userVC = UserVC()
                 return true
-            }
-            else {
+            } else {
                 let loginVC = UINavigationController(rootViewController: LoginVC())
             
                 loginVC.modalPresentationStyle = .popover

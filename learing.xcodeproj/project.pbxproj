@@ -34,6 +34,9 @@
 		C938C33F1F0A30090049C779 /* ChatCellLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938C33E1F0A30090049C779 /* ChatCellLeft.swift */; };
 		C938C3411F0A303D0049C779 /* ChatCellRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938C3401F0A303D0049C779 /* ChatCellRight.swift */; };
 		C938C3451F0A4B040049C779 /* UIViewController+KeyboardAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C938C3441F0A4B040049C779 /* UIViewController+KeyboardAdditions.m */; };
+		C941E2D61F0B5D9D00CAECF6 /* HypnosisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941E2D51F0B5D9D00CAECF6 /* HypnosisView.swift */; };
+		C941E2D81F0B640D00CAECF6 /* kn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C941E2D71F0B640D00CAECF6 /* kn.jpg */; };
+		C941E2DB1F0B8EC700CAECF6 /* DrawLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941E2DA1F0B8EC700CAECF6 /* DrawLineView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +72,9 @@
 		C938C3421F0A4B040049C779 /* learing-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "learing-Bridging-Header.h"; sourceTree = "<group>"; };
 		C938C3431F0A4B040049C779 /* UIViewController+KeyboardAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+KeyboardAdditions.h"; sourceTree = "<group>"; };
 		C938C3441F0A4B040049C779 /* UIViewController+KeyboardAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+KeyboardAdditions.m"; sourceTree = "<group>"; };
+		C941E2D51F0B5D9D00CAECF6 /* HypnosisView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HypnosisView.swift; sourceTree = "<group>"; };
+		C941E2D71F0B640D00CAECF6 /* kn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kn.jpg; sourceTree = "<group>"; };
+		C941E2DA1F0B8EC700CAECF6 /* DrawLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawLineView.swift; sourceTree = "<group>"; };
 		E03B34503E21723F57893BFF /* Pods-learing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-learing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-learing/Pods-learing.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,21 +128,15 @@
 		C9150F091F0389DF00FB5D5F /* learing */ = {
 			isa = PBXGroup;
 			children = (
+				C941E2D41F0B3E5500CAECF6 /* 用户 */,
+				C941E2D31F0B3E3200CAECF6 /* base */,
+				C941E2D21F0B3E1A00CAECF6 /* 资讯 */,
 				C938C3461F0A4B080049C779 /* util */,
 				C938C33D1F0A2FED0049C779 /* bean */,
 				C9150F391F05FE5900FB5D5F /* view */,
 				C9150F321F04CD9000FB5D5F /* cell */,
 				C9150F241F039A7D00FB5D5F /* res */,
-				C9150F0A1F0389DF00FB5D5F /* AppDelegate.swift */,
 				C9150F1E1F03979F00FB5D5F /* HomeVC.swift */,
-				C9150F201F0397B600FB5D5F /* UserVC.swift */,
-				C9150F221F0397D200FB5D5F /* NewsVC.swift */,
-				C9150F351F04E97400FB5D5F /* SwiftyExtra.swift */,
-				C9150F371F04F26600FB5D5F /* LoginVC.swift */,
-				C9150F401F06446F00FB5D5F /* WebDetailVC.swift */,
-				C9150F421F06540A00FB5D5F /* HomePopupWindow.swift */,
-				C90AA3C61F09E8CA00967ECD /* ImageDisplayVC.swift */,
-				C938C3391F0A29D40049C779 /* ChatVC.swift */,
 			);
 			path = learing;
 			sourceTree = "<group>";
@@ -144,10 +144,9 @@
 		C9150F241F039A7D00FB5D5F /* res */ = {
 			isa = PBXGroup;
 			children = (
-				C9150F161F0389DF00FB5D5F /* Info.plist */,
 				C9150F111F0389DF00FB5D5F /* Assets.xcassets */,
+				C941E2D71F0B640D00CAECF6 /* kn.jpg */,
 				C9150F131F0389DF00FB5D5F /* LaunchScreen.storyboard */,
-				C9150F0C1F0389DF00FB5D5F /* ViewController.swift */,
 				C9150F251F039A8500FB5D5F /* img */,
 			);
 			name = res;
@@ -181,6 +180,9 @@
 			isa = PBXGroup;
 			children = (
 				C9150F3A1F05FE6900FB5D5F /* GGPushBaseView.swift */,
+				C9150F421F06540A00FB5D5F /* HomePopupWindow.swift */,
+				C941E2D51F0B5D9D00CAECF6 /* HypnosisView.swift */,
+				C941E2DA1F0B8EC700CAECF6 /* DrawLineView.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -196,11 +198,42 @@
 		C938C3461F0A4B080049C779 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				C9150F351F04E97400FB5D5F /* SwiftyExtra.swift */,
 				C938C3431F0A4B040049C779 /* UIViewController+KeyboardAdditions.h */,
 				C938C3441F0A4B040049C779 /* UIViewController+KeyboardAdditions.m */,
 				C938C3421F0A4B040049C779 /* learing-Bridging-Header.h */,
 			);
 			name = util;
+			sourceTree = "<group>";
+		};
+		C941E2D21F0B3E1A00CAECF6 /* 资讯 */ = {
+			isa = PBXGroup;
+			children = (
+				C938C3391F0A29D40049C779 /* ChatVC.swift */,
+				C9150F221F0397D200FB5D5F /* NewsVC.swift */,
+				C9150F401F06446F00FB5D5F /* WebDetailVC.swift */,
+				C90AA3C61F09E8CA00967ECD /* ImageDisplayVC.swift */,
+			);
+			name = "资讯";
+			sourceTree = "<group>";
+		};
+		C941E2D31F0B3E3200CAECF6 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				C9150F161F0389DF00FB5D5F /* Info.plist */,
+				C9150F0C1F0389DF00FB5D5F /* ViewController.swift */,
+				C9150F0A1F0389DF00FB5D5F /* AppDelegate.swift */,
+			);
+			name = base;
+			sourceTree = "<group>";
+		};
+		C941E2D41F0B3E5500CAECF6 /* 用户 */ = {
+			isa = PBXGroup;
+			children = (
+				C9150F201F0397B600FB5D5F /* UserVC.swift */,
+				C9150F371F04F26600FB5D5F /* LoginVC.swift */,
+			);
+			name = "用户";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +299,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C941E2D81F0B640D00CAECF6 /* kn.jpg in Resources */,
 				C9150F311F03A01800FB5D5F /* item_c.png in Resources */,
 				C9150F301F03A01800FB5D5F /* item_b.png in Resources */,
 				C9150F151F0389DF00FB5D5F /* LaunchScreen.storyboard in Resources */,
@@ -336,6 +370,7 @@
 				C938C3411F0A303D0049C779 /* ChatCellRight.swift in Sources */,
 				C938C33C1F0A2E0A0049C779 /* ChatBean.swift in Sources */,
 				C9150F381F04F26600FB5D5F /* LoginVC.swift in Sources */,
+				C941E2D61F0B5D9D00CAECF6 /* HypnosisView.swift in Sources */,
 				C9150F3F1F0625D200FB5D5F /* MovieCell.swift in Sources */,
 				C9150F3D1F06244F00FB5D5F /* AutoFitHCell.swift in Sources */,
 				C9150F3B1F05FE6900FB5D5F /* GGPushBaseView.swift in Sources */,
@@ -346,6 +381,7 @@
 				C9150F361F04E97400FB5D5F /* SwiftyExtra.swift in Sources */,
 				C9150F411F06446F00FB5D5F /* WebDetailVC.swift in Sources */,
 				C90AA3C71F09E8CA00967ECD /* ImageDisplayVC.swift in Sources */,
+				C941E2DB1F0B8EC700CAECF6 /* DrawLineView.swift in Sources */,
 				C938C3381F0A19D40049C779 /* ImageListCell.swift in Sources */,
 				C938C3451F0A4B040049C779 /* UIViewController+KeyboardAdditions.m in Sources */,
 				C9150F341F04CDA400FB5D5F /* HomeEventCell.swift in Sources */,
