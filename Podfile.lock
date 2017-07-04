@@ -1,0 +1,27 @@
+PODS:
+  - Alamofire (4.5.0)
+  - Kingfisher (3.10.2)
+  - MJRefresh (3.1.12)
+  - SnapKit (3.2.0)
+  - SVProgressHUD (2.1.2)
+  - SwiftyJSON (3.1.4)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.5.0)
+  - Kingfisher (~> 3.10.2)
+  - MJRefresh (~> 3.1.12)
+  - SnapKit (~> 3.2.0)
+  - SVProgressHUD (~> 2.1.2)
+  - SwiftyJSON (~> 3.1.4)
+
+SPEC CHECKSUMS:
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  Kingfisher: 7297492bf8cec9b2e2dee3519f2219948580d98e
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+
+PODFILE CHECKSUM: eccdc0e8e9db3f4babe7521f150c66f9807c38d7
+
+COCOAPODS: 1.2.1
