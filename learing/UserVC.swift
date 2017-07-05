@@ -76,6 +76,9 @@ class UserVC: UIViewController,UITextFieldDelegate{
             m.top.equalToSuperview().offset(220)
         }
         addAnimOnAvatar()
+        
+        self.view = DrawLineView.init(frame: CGRect.zero)
+        
     }
     
     func addAnimOnAvatar(){

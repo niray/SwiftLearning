@@ -61,11 +61,11 @@ class ImageDisplayVC : UIViewController,UICollectionViewDelegate,UICollectionVie
         self.clcV.reloadData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         let screenW = Int(UIScreen.main.bounds.width)
         let offset = screenW * currentIndex
-        self.clcV.setContentOffset(CGPoint(x:offset , y: 0), animated: true)
+        self.clcV.setContentOffset(CGPoint(x:offset , y: 0), animated: false)
     }
     
     func onChatClick(){
