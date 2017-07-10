@@ -13,9 +13,12 @@ class HypnosisView: UIView {
     
     var circleColor:UIColor = UIColor.lightGray
     
+    var ivAvatar : UIImage? = nil
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor.clear
+        self.clipsToBounds = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -42,10 +45,12 @@ class HypnosisView: UIView {
         
         let endPoint = CGPoint(x: bounds.size.width, y: bounds.size.height)
         
+      
+        //渐变
         if let ctx = UIGraphicsGetCurrentContext(){
             
             let colorSpace = CGColorSpaceCreateDeviceRGB()
-            let components:[CGFloat] = [1.0,0.0,0.0,1.0,1.0,1.0,0.0,1.0]
+            let components:[CGFloat] = [1.0,1.0,1.0,1.0,1.0,1.0,0.0,1.0]
             let locations:[CGFloat]  = [0.0, 1.0]
             
             if let gradient = CGGradient(colorSpace: colorSpace, colorComponents: components, locations: locations, count: 2){
@@ -55,16 +60,49 @@ class HypnosisView: UIView {
                 //   CGGradientRelease(gradient)
                 //   CGColorSpaceRelease(colorSpace)
             }
+        
         }
         
+        if let ia = ivAvatar  {
+            ia.draw(in: rect, blendMode: .normal, alpha: 0.45)
         
+        }
+        
+        //圆
         path.lineWidth = 10
         
         circleColor.setStroke()
         //绘制路径
         path.stroke()
+        
+        drawAspiral()
+    
     }
     
+    
+    func drawAspiral() {
+        if let ctx = UIGraphicsGetCurrentContext(){
+            let centerW = Double(self.bounds.width / 2)
+            let centerH = Double(self.bounds.height / 2)
+            
+            ctx.setStrokeColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+            ctx.setLineWidth(5.0)
+            ctx.move(to: CGPoint(x: centerW, y:centerH))
+            
+            let a = 2.0
+            for t in stride(from: 0.0, through: 25 * 3.1415926, by: +0.1){
+                let r = a * t
+                let x = centerW + r * cos(t)
+                let y = centerH + r * sin(t)
+                
+                ctx.addLine(to: CGPoint(x: x, y: y))
+                ctx.strokePath()
+                ctx.move(to: CGPoint(x: x, y: y))
+            }
+        }
+    }
+    
+   
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //获取三个0到1之间的数字
         let red   = CGFloat(Float(arc4random()) / Float(UINT32_MAX))
@@ -76,8 +114,17 @@ class HypnosisView: UIView {
         self.setNeedsDisplay()
     }
     
+    func setUIImage(iv:UIImage){
+        self.ivAvatar = iv
+        self.setNeedsDisplay()
+    }
+    
     func drawHypnoticMessage(message:String){
-        for _ in 0...5{
+        //Clear old sub views
+        subviews.forEach { (v) in
+            v.removeFromSuperview()
+        }
+        for _ in 0...2{
             let msgLbl = UILabel.init()
             
             msgLbl.backgroundColor = UIColor.clear

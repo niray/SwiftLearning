@@ -37,6 +37,7 @@
 		C941E2D61F0B5D9D00CAECF6 /* HypnosisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941E2D51F0B5D9D00CAECF6 /* HypnosisView.swift */; };
 		C941E2D81F0B640D00CAECF6 /* kn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C941E2D71F0B640D00CAECF6 /* kn.jpg */; };
 		C941E2DB1F0B8EC700CAECF6 /* DrawLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941E2DA1F0B8EC700CAECF6 /* DrawLineView.swift */; };
+		C941E2DD1F0DD62800CAECF6 /* DrawLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941E2DC1F0DD62800CAECF6 /* DrawLineCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		C941E2D51F0B5D9D00CAECF6 /* HypnosisView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HypnosisView.swift; sourceTree = "<group>"; };
 		C941E2D71F0B640D00CAECF6 /* kn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kn.jpg; sourceTree = "<group>"; };
 		C941E2DA1F0B8EC700CAECF6 /* DrawLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawLineView.swift; sourceTree = "<group>"; };
+		C941E2DC1F0DD62800CAECF6 /* DrawLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawLineCell.swift; sourceTree = "<group>"; };
 		E03B34503E21723F57893BFF /* Pods-learing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-learing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-learing/Pods-learing.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +130,7 @@
 		C9150F091F0389DF00FB5D5F /* learing */ = {
 			isa = PBXGroup;
 			children = (
+				C9150F1E1F03979F00FB5D5F /* HomeVC.swift */,
 				C941E2D41F0B3E5500CAECF6 /* 用户 */,
 				C941E2D31F0B3E3200CAECF6 /* base */,
 				C941E2D21F0B3E1A00CAECF6 /* 资讯 */,
@@ -136,7 +139,6 @@
 				C9150F391F05FE5900FB5D5F /* view */,
 				C9150F321F04CD9000FB5D5F /* cell */,
 				C9150F241F039A7D00FB5D5F /* res */,
-				C9150F1E1F03979F00FB5D5F /* HomeVC.swift */,
 			);
 			path = learing;
 			sourceTree = "<group>";
@@ -172,6 +174,7 @@
 				C938C3371F0A19D40049C779 /* ImageListCell.swift */,
 				C938C33E1F0A30090049C779 /* ChatCellLeft.swift */,
 				C938C3401F0A303D0049C779 /* ChatCellRight.swift */,
+				C941E2DC1F0DD62800CAECF6 /* DrawLineCell.swift */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				C9150F1F1F03979F00FB5D5F /* HomeVC.swift in Sources */,
 				C9150F431F06540A00FB5D5F /* HomePopupWindow.swift in Sources */,
 				C9150F0D1F0389DF00FB5D5F /* ViewController.swift in Sources */,
+				C941E2DD1F0DD62800CAECF6 /* DrawLineCell.swift in Sources */,
 				C938C33F1F0A30090049C779 /* ChatCellLeft.swift in Sources */,
 				C938C3411F0A303D0049C779 /* ChatCellRight.swift in Sources */,
 				C938C33C1F0A2E0A0049C779 /* ChatBean.swift in Sources */,

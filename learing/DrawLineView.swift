@@ -92,7 +92,7 @@ class DrawLineView: UIView,UIGestureRecognizerDelegate {
     
     //移动线条
     func moveLineEvent(gr:UIPanGestureRecognizer){
-        if(self.selectLine == nil){
+        if(self.selectLine != nil){
             if gr.state == UIGestureRecognizerState.changed{
                 let translation = gr.translation(in: self)
                 var begin = selectLine?.begin
@@ -190,7 +190,7 @@ class DrawLineView: UIView,UIGestureRecognizerDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         debugPrint("touchesBegan")
-//        if(self.isMoving == false){
+        if(self.selectLine == nil){
             for t in touches {
                 let location = t.location(in: self)
                 let line = Line()
@@ -201,7 +201,7 @@ class DrawLineView: UIView,UIGestureRecognizerDelegate {
                 
                 self.linesInProgress.setValue(line, forKey:"\(key)")
             }
-//        }
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {

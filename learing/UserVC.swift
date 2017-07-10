@@ -10,7 +10,7 @@ import Foundation
 import SnapKit
 import UIKit
 
-class UserVC: UIViewController,UITextFieldDelegate{
+class UserVC: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     
     lazy var tfInput:UITextField = {
@@ -22,17 +22,32 @@ class UserVC: UIViewController,UITextFieldDelegate{
         return mTf
     }()
     
+    lazy var btnAvatar:UIButton = {
+        let btn = UIButton()
+        btn.setTitle("更换头像", for: [])
+        btn.setTitleColor(UIColor.gray, for: [])
+        btn.addTarget(self, action: #selector(self.pickAvatar), for: .touchUpInside)
+        return btn
+    }()
+    
+    lazy var ivAvatar :UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFit
+        iv.backgroundColor = UIColor.lightGray
+        return iv
+    }()
+    
     lazy var datePicker:UIDatePicker = UIDatePicker()
     
     lazy var hypnosisView:HypnosisView = HypnosisView(frame: CGRect.zero)
     
     
-    let w = (UIScreen.main.bounds.width - 100)/2
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         navigationItem.title = "我的"
+        
         initView()
     }
     
@@ -53,15 +68,13 @@ class UserVC: UIViewController,UITextFieldDelegate{
         
         view.addSubview(hypnosisView)
         
-        hypnosisView.circleColor = UIColor.red
-        hypnosisView.backgroundColor = UIColor.purple
+        hypnosisView.circleColor = UIColor.red 
         
         hypnosisView.snp.makeConstraints { (m) in
             m.width.equalTo(100)
             m.height.equalTo(100)
             
-            m.left.equalToSuperview().offset(w)
-            m.right.equalToSuperview().offset(-w)
+            m.centerX.equalToSuperview()
             m.top.equalToSuperview().offset(100)
         }
         
@@ -71,15 +84,63 @@ class UserVC: UIViewController,UITextFieldDelegate{
             m.width.equalTo(100)
             m.height.equalTo(30)
             
-            m.left.equalToSuperview().offset(w)
-            m.right.equalToSuperview().offset(-w)
+            m.centerX.equalToSuperview()
+           
             m.top.equalToSuperview().offset(220)
         }
+        
+        self.view.addSubview(btnAvatar)
+        
+        btnAvatar.snp.makeConstraints { (m) in
+            m.top.equalTo(self.tfInput.snp.bottom).offset(10)
+            m.centerX.equalToSuperview()
+        }
+        
+        self.view.addSubview(ivAvatar)
+        ivAvatar.snp.makeConstraints { (m) in
+            m.width .equalTo(100)
+            m.height.equalTo(100)
+            m.top.equalTo(self.btnAvatar.snp.bottom).offset(10)
+            m.centerX.equalToSuperview()
+        }
+        
         addAnimOnAvatar()
         
-        self.view = DrawLineView.init(frame: CGRect.zero)
-        
     }
+    
+    func pickAvatar(){
+        let imagePicker = UIImagePickerController.init()
+        
+        if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)){
+            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+        }else{
+            imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        }
+        
+        imagePicker.delegate = self
+        
+        self.present(imagePicker, animated: true) {
+            
+        }
+    }
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+       
+        //等UIImagePickerController消失后再去调用image
+        
+        self.dismiss(animated: true) {
+            
+            if let image  = info[UIImagePickerControllerEditedImage] as? UIImage{
+                self.ivAvatar.image = image
+                self.hypnosisView.setUIImage(iv: image)
+            }else if let img = info[UIImagePickerControllerOriginalImage] as? UIImage{
+                self.ivAvatar.image = img
+                self.hypnosisView.setUIImage(iv: img)
+            }
+        }        
+    }
+    
     
     func addAnimOnAvatar(){
         self.hypnosisView.alpha = 0

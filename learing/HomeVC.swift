@@ -27,17 +27,20 @@ class HomeVC : UIViewController,UITableViewDataSource,UITableViewDelegate,UIScro
     lazy var tableV:UITableView = {
         let a = UITableView(frame: UIScreen.main.bounds)
         a.register(HomeEventCell.self, forCellReuseIdentifier: "eventId")
+        a.register(DrawLineCell.self, forCellReuseIdentifier: "drawId")
         a.delegate = self
         a.dataSource = self
         return a
     }()
     
-    lazy var titleView : UIButton = {
-       let tv = UIButton(frame: CGRect(x: 0, y: 310, width: 200, height: 35))
-        tv.setTitle("首页 ⇩", for: [])
-        tv.setTitleColor(UIColor.gray, for: .normal)
-        
-        tv.addTarget(self, action: #selector(self.showPopWindow),for:.touchUpInside)
+    lazy var mTitleView : UILabel = {
+        let tv = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 35))
+        tv.text="首页 ⇩"
+        tv.textAlignment = .center
+        tv.textColor = UIColor.gray
+        tv.isUserInteractionEnabled = true
+        let ugz = UITapGestureRecognizer(target: self, action: #selector(self.showPopWindow))
+        tv.addGestureRecognizer(ugz)
         return tv
     }()
     
@@ -48,7 +51,7 @@ class HomeVC : UIViewController,UITableViewDataSource,UITableViewDelegate,UIScro
         
         view.backgroundColor = UIColor.white
         
-        self.navigationItem.titleView = titleView
+        self.navigationItem.titleView = mTitleView
         
         self.getRaceList()
         
@@ -59,12 +62,13 @@ class HomeVC : UIViewController,UITableViewDataSource,UITableViewDelegate,UIScro
         tableV.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {
             self.getRaceList()
         })
-        
+
         self.view.addSubview(tableV)
         
     }
     
     func showPopWindow(){
+        debugPrint("click")
         if  popWindow.isHidden {
                 popWindow.showInView(view,self)
         }
@@ -130,13 +134,18 @@ class HomeVC : UIViewController,UITableViewDataSource,UITableViewDelegate,UIScro
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let a = tableView.dequeueReusableCell(withIdentifier: "eventId")
-        
-        if let b = a as? HomeEventCell{
-            let jsonData = self.raceListArr[indexPath.row]
-            b.updateCellDate(jsonData)
-        }        
-        return a!
+        if(indexPath.row<1){
+            if let a = tableView.dequeueReusableCell(withIdentifier: "drawId") as? DrawLineCell{
+                return a
+            }
+        }else{
+            if let a = tableView.dequeueReusableCell(withIdentifier: "eventId") as? HomeEventCell{
+                let jsonData = self.raceListArr[indexPath.row]
+                a.updateCellDate(jsonData)
+                return a
+            }
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -144,7 +153,7 @@ class HomeVC : UIViewController,UITableViewDataSource,UITableViewDelegate,UIScro
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-       return indexPath.row < raceListArr.count
+       return indexPath.row > 1 && indexPath.row < raceListArr.count
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
